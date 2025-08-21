@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "dergstuff:block/dark_derg_wool"
+  }
+}

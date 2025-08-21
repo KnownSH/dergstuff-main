@@ -6,6 +6,7 @@ build/
 
 ### Minecraft ###
 run
+.cache/
 
 ### IntelliJ IDEA ###
 .idea
