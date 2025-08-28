@@ -9,8 +9,12 @@
   ],
   "license": "${mod_license}",
   "environment": "*",
+  "icon": "assets/dergstuff/icon.png",
   "entrypoints": {
     "main": [
+      "space.derg.dergstuff.loaders.fabric.DergStuffFabric"
+    ],
+    "client": [
       "space.derg.dergstuff.loaders.fabric.DergStuffFabric"
     ],
     "fabric-datagen": [
@@ -22,5 +26,8 @@
     "fabric-api": "*",
     "java": ">=17",
     "minecraft": "${mc}"
+  },
+  "recommends": {
+    "fusion": ">=1.0.0"
   }
 }

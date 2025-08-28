@@ -12,6 +12,8 @@ allprojects {
         mavenCentral()
         mavenLocal()
         strictMaven("https://maven.fabricmc.net/", "net.fabricmc")
+        strictMaven("https://maven.terraformersmc.com/", "com.terraformersmc")
         maven("https://maven.neoforged.net/releases")
+        maven("https://api.modrinth.com/maven")
     }
 }

@@ -3,11 +3,26 @@ package space.derg.dergstuff.loaders.fabric;
 
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.minecraft.data.models.BlockModelGenerators;
+import net.minecraft.data.models.model.ModelTemplates;
+import net.minecraft.data.models.model.TextureMapping;
+import net.minecraft.data.models.model.TextureSlot;
+import net.minecraft.resources.ResourceLocation;
+import space.derg.dergstuff.DergStuff;
 import space.derg.dergstuff.loaders.fabric.datagen.DSBlockModels;
+import space.derg.dergstuff.loaders.fabric.datagen.DSCraftingRecipes;
 import space.derg.dergstuff.loaders.fabric.datagen.DSLangEnglish;
 import space.derg.dergstuff.loaders.fabric.datagen.DSLootTables;
+//? if fusion {
+import space.derg.dergstuff.loaders.fabric.datagen.compat.DSFusionModels;
+import space.derg.dergstuff.loaders.fabric.datagen.compat.DSFusionTextures;
+//?}
 import space.derg.dergstuff.loaders.fabric.datagen.entries.DatagenEntries;
 import space.derg.dergstuff.registry.DSBlocks;
+import space.derg.dergstuff.registry.DSItems;
+
+import java.nio.file.Path;
 
 public class DergStuffDatagen implements DataGeneratorEntrypoint {
     public static final DatagenEntries ENTRIES = new DatagenEntries();
@@ -27,9 +42,28 @@ public class DergStuffDatagen implements DataGeneratorEntrypoint {
         ENTRIES.block(DSBlocks.DERG_WOOL).lang("Derg Wool");
         ENTRIES.block(DSBlocks.DARK_DERG_WOOL).lang("Dark Derg Wool");
 
+        ENTRIES.block(DSBlocks.COMMERCIAL_SHELF)
+                .model((generator, block) -> {
+                    TextureMapping textureMap = TextureMapping.top(block)
+                            .put(TextureSlot.SIDE, TextureMapping.getBlockTexture(block, "_side"))
+                            .put(TextureSlot.FRONT, TextureMapping.getBlockTexture(block, "_empty"));
+                    ResourceLocation blockModel = ModelTemplates.CUBE_ORIENTABLE.create(block, textureMap, generator.modelOutput);
+                    generator.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(block, blockModel).with(BlockModelGenerators.createHorizontalFacingDispatch()));
+                })
+                .lang("Commercial Shelf");
+
+        ENTRIES.item(DSItems.DERG_SCUTE).lang("Derg Scute");
+
         datapack.addProvider(DSLangEnglish::new);
         datapack.addProvider(DSBlockModels::new);
         datapack.addProvider(DSLootTables::new);
+        datapack.addProvider(DSCraftingRecipes::new);
+
+        //? if fusion {
+        FabricDataGenerator.Pack fusionPack = fabricDataGenerator.createBuiltinResourcePack(new ResourceLocation(DergStuff.MOD_ID, "fusion"));
+        fusionPack.addProvider(DSFusionTextures::new);
+        fusionPack.addProvider(DSFusionModels::new);
+        //?}
     }
 }
 //?}

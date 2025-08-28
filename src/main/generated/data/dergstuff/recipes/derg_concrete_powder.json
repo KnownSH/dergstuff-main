@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "dergstuff:derg_scute"
+    },
+    {
+      "item": "minecraft:sand"
+    },
+    {
+      "item": "minecraft:sand"
+    },
+    {
+      "item": "minecraft:sand"
+    },
+    {
+      "item": "minecraft:sand"
+    },
+    {
+      "item": "minecraft:gravel"
+    },
+    {
+      "item": "minecraft:gravel"
+    },
+    {
+      "item": "minecraft:gravel"
+    },
+    {
+      "item": "minecraft:gravel"
+    }
+  ],
+  "result": {
+    "count": 8,
+    "item": "dergstuff:derg_concrete_powder"
+  }
+}

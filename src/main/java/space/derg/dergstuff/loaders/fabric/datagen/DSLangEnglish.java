@@ -14,8 +14,10 @@ public class DSLangEnglish extends FabricLanguageProvider {
     @Override
     public void generateTranslations(TranslationBuilder translationBuilder) {
         DergStuffDatagen.ENTRIES.blockEntries.forEach(entry -> entry.genLang(translationBuilder));
+        DergStuffDatagen.ENTRIES.itemEntries.forEach(entry -> entry.genLang(translationBuilder));
 
         translationBuilder.add("item_group." + DergStuff.MOD_ID + ".main_tab", "Derg's Stuff");
+        translationBuilder.add("item.dergstuff.derg_scute.tooltip", "Why does it- why does it bounce?");
     }
 }
 //?}

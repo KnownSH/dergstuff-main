@@ -26,6 +26,11 @@ public class BlockDatagenEntry extends DatagenEntry<Block> {
         return this;
     }
 
+    public BlockDatagenEntry ignoreModel() {
+        this.modelGenerator = null;
+        return this;
+    }
+
     public BlockDatagenEntry loot(BiConsumer<FabricBlockLootTableProvider, Block> lootGenerator) {
         this.lootGenerator = lootGenerator;
         return this;

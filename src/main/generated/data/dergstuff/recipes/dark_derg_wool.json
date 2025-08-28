@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "dergstuff:derg_scute"
+    },
+    {
+      "item": "minecraft:black_dye"
+    },
+    {
+      "tag": "minecraft:wool"
+    },
+    {
+      "tag": "minecraft:wool"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "item": "dergstuff:dark_derg_wool"
+  }
+}

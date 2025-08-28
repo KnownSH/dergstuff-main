@@ -40,5 +40,5 @@ stonecutter {
     }
 }
 
-rootProject.name = "Derg Stuffs"
+rootProject.name = "Derg Stuff"
 

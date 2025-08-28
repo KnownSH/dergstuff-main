@@ -1,6 +1,7 @@
 //? if fabric {
 package space.derg.dergstuff.loaders.fabric.datagen.entries;
 
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import space.derg.dergstuff.loaders.common.registry.RegistryEntry;
 
@@ -9,10 +10,17 @@ import java.util.List;
 
 public class DatagenEntries {
     public final List<BlockDatagenEntry> blockEntries = new ArrayList<>();
+    public final List<ItemDatagenEntry> itemEntries = new ArrayList<>();
 
     public BlockDatagenEntry block(RegistryEntry<Block> block) {
         BlockDatagenEntry entry = new BlockDatagenEntry(block.get(), block.getId().getPath());
         blockEntries.add(entry);
+        return entry;
+    }
+
+    public ItemDatagenEntry item(RegistryEntry<Item> item) {
+        ItemDatagenEntry entry = new ItemDatagenEntry(item.get(), item.getId().getPath());
+        itemEntries.add(entry);
         return entry;
     }
 }

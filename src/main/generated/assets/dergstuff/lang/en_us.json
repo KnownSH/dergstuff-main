@@ -1,4 +1,5 @@
 {
+  "block.dergstuff.commercial_shelf": "Commercial Shelf",
   "block.dergstuff.dark_derg_bricks": "Dark Derg Bricks",
   "block.dergstuff.dark_derg_concrete": "Dark Derg Concrete",
   "block.dergstuff.dark_derg_concrete_powder": "Dark Derg Concrete Powder",
@@ -9,5 +10,7 @@
   "block.dergstuff.derg_concrete_powder": "Derg Concrete Powder",
   "block.dergstuff.derg_terracotta": "Derg Terracotta",
   "block.dergstuff.derg_wool": "Derg Wool",
+  "item.dergstuff.derg_scute": "Derg Scute",
+  "item.dergstuff.derg_scute.tooltip": "Why does it- why does it bounce?",
   "item_group.dergstuff.main_tab": "Derg's Stuff"
 }

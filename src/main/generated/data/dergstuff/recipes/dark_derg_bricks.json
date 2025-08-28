@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "dergstuff:derg_scute"
+    },
+    {
+      "item": "minecraft:black_dye"
+    },
+    {
+      "item": "minecraft:bricks"
+    },
+    {
+      "item": "minecraft:bricks"
+    },
+    {
+      "item": "minecraft:bricks"
+    },
+    {
+      "item": "minecraft:bricks"
+    },
+    {
+      "item": "minecraft:bricks"
+    },
+    {
+      "item": "minecraft:bricks"
+    },
+    {
+      "item": "minecraft:bricks"
+    }
+  ],
+  "result": {
+    "count": 7,
+    "item": "dergstuff:dark_derg_bricks"
+  }
+}

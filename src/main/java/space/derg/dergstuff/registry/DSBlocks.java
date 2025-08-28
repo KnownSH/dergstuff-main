@@ -5,11 +5,13 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.ConcretePowderBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import space.derg.dergstuff.DergStuff;
 import space.derg.dergstuff.loaders.common.registry.DergRegistries;
 import space.derg.dergstuff.loaders.common.registry.DergRegistry;
 import space.derg.dergstuff.loaders.common.registry.RegistryEntry;
+import space.derg.dergstuff.world.block.ShelfBlock;
 
 import java.util.function.Function;
 
@@ -20,13 +22,16 @@ public class DSBlocks {
             DERG_TERRACOTTA = registerCopyBlock("derg_terracotta", Blocks.TERRACOTTA),
             DERG_BRICKS = registerCopyBlock("derg_bricks", Blocks.BRICKS),
             DERG_CONCRETE = registerCopyBlock("derg_concrete", Blocks.WHITE_CONCRETE),
-            DERG_CONCRETE_POWDER = registerCopyBlock("derg_concrete_powder", Blocks.WHITE_CONCRETE_POWDER),
+            DERG_CONCRETE_POWDER = registerBlock("derg_concrete_powder",
+                    properties -> new ConcretePowderBlock(DERG_CONCRETE.get(), properties), BlockBehaviour.Properties.copy(Blocks.WHITE_CONCRETE_POWDER)),
             DERG_WOOL = registerCopyBlock("derg_wool", Blocks.WHITE_WOOL),
             DARK_DERG_TERRACOTTA = registerCopyBlock("dark_derg_terracotta", Blocks.TERRACOTTA),
             DARK_DERG_BRICKS = registerCopyBlock("dark_derg_bricks", Blocks.BRICKS),
             DARK_DERG_CONCRETE = registerCopyBlock("dark_derg_concrete", Blocks.WHITE_CONCRETE),
-            DARK_DERG_CONCRETE_POWDER = registerCopyBlock("dark_derg_concrete_powder", Blocks.WHITE_CONCRETE_POWDER),
-            DARK_DERG_WOOL = registerCopyBlock("dark_derg_wool", Blocks.WHITE_WOOL);
+            DARK_DERG_CONCRETE_POWDER = registerBlock("dark_derg_concrete_powder",
+                    properties -> new ConcretePowderBlock(DARK_DERG_CONCRETE.get(), properties), BlockBehaviour.Properties.copy(Blocks.WHITE_CONCRETE_POWDER)),
+            DARK_DERG_WOOL = registerCopyBlock("dark_derg_wool", Blocks.WHITE_WOOL),
+            COMMERCIAL_SHELF = registerBlock("commercial_shelf", ShelfBlock::new, BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK));
 
     private static RegistryEntry<Block> registerCopyBlock(String id, Block fromBlock) {
         return registerBlock(id, Block::new, BlockBehaviour.Properties.copy(fromBlock));

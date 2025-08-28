@@ -1,0 +1,26 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "fusion"
+      ]
+    }
+  ],
+  "type": "fusion:connecting",
+  "parent": "minecraft:block/orientable",
+  "connections": {
+    "type": "fusion:or",
+    "predicates": [
+      {
+        "type": "fusion:is_same_block"
+      }
+    ]
+  },
+  "loader": "fusion:model",
+  "textures": {
+    "front": "dergstuff:block/commercial_shelf_empty-fusion",
+    "side": "dergstuff:block/commercial_shelf_side",
+    "top": "dergstuff:block/commercial_shelf_top"
+  }
+}

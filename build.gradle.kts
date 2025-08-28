@@ -1,8 +1,8 @@
 plugins {
-    id("dev.isxander.modstitch.base") version "0.7.0-unstable"
+    id("dev.isxander.modstitch.base") version "0.7.0-unstable" // giving all credit here to particle-rain for fixing my legacy forge issues
 }
 
-fun prop(name: String, consumer: (prop: String) -> Unit) {
+fun ifDef(name: String, consumer: (prop: String) -> Unit) {
     (findProperty(name) as? String?)
         ?.let(consumer)
 }
@@ -18,18 +18,25 @@ val loader = when {
     else -> error("Could not determine minecraft mod loader.")
 }
 
+tasks {
+    processResources {
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+        outputs.upToDateWhen { false }
+    }
+}
+
 modstitch {
     minecraftVersion = minecraft
     javaVersion = if (stonecutter.eval(minecraft, ">1.20.4")) 21 else 17
 
     parchment {
-        prop("deps.parchment") { mappingsVersion = it }
+        ifDef("deps.parchment") { mappingsVersion = it }
     }
 
     metadata {
         modId = "dergstuff"
         modName = "Dergs Stuff"
-        modVersion = "1.0.0"
+        modVersion = "1.1.0+$name"
         modGroup = "space.derg"
         modAuthor = "KnownSH"
         modLicense = "MIT"
@@ -42,6 +49,11 @@ modstitch {
         replacementProperties.populate {
             put("mod_issue_tracker", "https://github.com/modunion/modstitch/issues")
             put("mc", property("req.version_range") as String)
+            if (isForge) {
+                put("refmap", ",\"refmap\": \"dergstuff.refmap.json\"")
+            } else {
+                put("refmap", "")
+            }
             put("pack_format", when (property("deps.minecraft")) {
                 "1.20.1" -> 15
                 "1.21.4" -> 46
@@ -55,6 +67,8 @@ modstitch {
         fabricLoaderVersion = property("deps.fabric_loader") as String
 
         configureLoom {
+            accessWidenerPath = rootProject.file("./src/main/resources/dergstuff.accesswidener")
+
             runs {
                 all {
                     runDir = "../../run"
@@ -67,7 +81,7 @@ modstitch {
                         name = "Data Generation Client"
                         vmArg("-Dfabric-api.datagen")
                         vmArg("-Dfabric-api.datagen.output-dir=${project.rootDir.toPath().resolve("src/main/generated")}")
-                        vmArg("-Dfabric-api.datagen.modid=dergstuff")
+                        vmArg("-Dfabric-api.datagen.modid=${metadata.modId}")
                         runDir = "build/datagen"
                     }
                 }
@@ -77,36 +91,54 @@ modstitch {
 
     // ModDevGradle (NeoForge, Forge, Forgelike)
     moddevgradle {
-        prop("deps.forge") { forgeVersion = it }
-        prop("deps.neoform") { neoFormVersion = it }
-        prop("deps.neoforge") { neoForgeVersion = it }
-        prop("deps.mcp") { mcpVersion = it }
+
+        ifDef("deps.forge") { forgeVersion = it }
+        ifDef("deps.neoform") { neoFormVersion = it }
+        ifDef("deps.neoforge") { neoForgeVersion = it }
+        ifDef("deps.mcp") { mcpVersion = it }
 
         defaultRuns()
 
         configureNeoForge {
-            runs.all {
-                gameDirectory = file("../../run")
+            runs {
+                all {
+                    gameDirectory = file("../../run")
+                }
             }
         }
     }
 
     mixin {
-        //addMixinsToModManifest = true
-        //configs.register("dergstuff")
+        addMixinsToModManifest = true
+        configs.register("dergstuff")
     }
+}
+
+fun implementIfPropExists(prop: String, dependencyNotation: (version: String) -> Any) {
+    ifDef(prop) { version -> dependencies.modstitchModImplementation(dependencyNotation(version)) }
 }
 
 dependencies {
     modstitch.loom {
         modstitchModImplementation("net.fabricmc.fabric-api:fabric-api:${property("deps.fabric_api")}")
+        implementIfPropExists("deps.modmenu") { "com.terraformersmc:modmenu:$it" }
+
+        // Fabric compats
+        implementIfPropExists("deps.fusion") { "maven.modrinth:fusion-connected-textures:$it-${loader}-mc${minecraft}" }
+        //modstitchModCompileOnly("maven.modrinth:fusion-connected-textures:${property("deps.fusion")}-${loader}-mc${minecraft}")
+    }
+
+    if (isForge) {
+        // @shadows do not remap, so anything legacy forge related can only be targeted via compileonly brah
+        modstitchModCompileOnly("maven.modrinth:fusion-connected-textures:${property("deps.fusion")}-${loader}-mc${minecraft}")
     }
 }
 
+val loaderStonecutter: String = name.substringAfter('-')
 stonecutter {
     constants {
-        val loader: String = current.project.substringAfter('-')
-        match(loader, "fabric", "forge", "neoforge")
+        match(loaderStonecutter, "fabric", "forge", "neoforge")
+        put("fusion", hasProperty("deps.fusion"))
     }
 }
 

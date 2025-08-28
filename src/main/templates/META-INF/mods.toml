@@ -4,20 +4,21 @@ issueTrackerURL = "${mod_issue_tracker}"
 license = "${mod_license}"
 
 [[mods]]
-modId = "${mod_id}"
+modId = "dergstuff"
 version = "${mod_version}"
 displayName = "${mod_name}"
+logoFile="assets/dergstuff/icon.png"
 description = '''${mod_description}'''
 authors = "${mod_author}"
 
-[[dependencies.${mod_id}]]
+[[dependencies.dergstuff]]
 modId="forge"
 mandatory = true
 versionRange="[47,)"
 ordering="NONE"
 side="BOTH"
 
-[[dependencies.${mod_id}]]
+[[dependencies.dergstuff]]
 modId = "minecraft"
 mandatory = true
 versionRange = "${mc}"
