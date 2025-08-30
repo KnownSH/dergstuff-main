@@ -3,6 +3,7 @@ package space.derg.dergstuff.loaders.fabric;
 
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
+import net.minecraft.data.DataProvider;
 import net.minecraft.data.models.BlockModelGenerators;
 import net.minecraft.data.models.model.ModelTemplates;
 import net.minecraft.data.models.model.TextureMapping;
@@ -56,25 +57,30 @@ public class DergStuffDatagen implements DataGeneratorEntrypoint {
         datapack.addProvider(DSBlockModels::new);
         datapack.addProvider(DSLootTables::new);
         datapack.addProvider(DSCraftingRecipes::new);
-        datapack.addProvider(DSTextureSpliting::new);
 
-        //? if continuity
-        datapack.addProvider(DSContinuityProperties::new);
+        //? if continuity {
+        FabricDataGenerator.Pack continuityPack = createResourcePackWithIcon(fabricDataGenerator, "continuity");
+        continuityPack.addProvider(DSTextureSpliting::new);
+        continuityPack.addProvider(DSContinuityProperties::new);
+        //?}
 
         //? if fusion {
-        FabricDataGenerator.Pack fusionPack = fabricDataGenerator.createBuiltinResourcePack(new ResourceLocation(DergStuff.MOD_ID, "fusion"));
-        fusionPack.addProvider((FabricDataGenerator.Pack.Factory<FileCopyProvider>) output ->
-                new FileCopyProvider(output).addFile(new ResourceLocation(DergStuff.MOD_ID, "fusion-pack.png"), "pack.png"));
+        FabricDataGenerator.Pack fusionPack = createResourcePackWithIcon(fabricDataGenerator, "fusion");
         fusionPack.addProvider(DSFusionTextures::new);
         fusionPack.addProvider(DSFusionModels::new);
         //?}
 
         //? if athena {
-        FabricDataGenerator.Pack athenaPack = fabricDataGenerator.createBuiltinResourcePack(new ResourceLocation(DergStuff.MOD_ID, "athena"));
-        athenaPack.addProvider((FabricDataGenerator.Pack.Factory<FileCopyProvider>) output ->
-                new FileCopyProvider(output).addFile(new ResourceLocation(DergStuff.MOD_ID, "athena-pack.png"), "pack.png"));
+        FabricDataGenerator.Pack athenaPack = createResourcePackWithIcon(fabricDataGenerator, "athena");
         athenaPack.addProvider(DSAthenaBlockStates::new);
         //?}
+    }
+
+    private static FabricDataGenerator.Pack createResourcePackWithIcon(FabricDataGenerator generator, String modId) {
+        FabricDataGenerator.Pack resourcePack = generator.createBuiltinResourcePack(new ResourceLocation(DergStuff.MOD_ID, modId));
+        resourcePack.addProvider((FabricDataGenerator.Pack.Factory<DataProvider>)
+                output -> new FileCopyProvider(output).addFile(new ResourceLocation(DergStuff.MOD_ID, modId + "-pack.png"), "pack.png"));
+        return resourcePack;
     }
 }
 //?}

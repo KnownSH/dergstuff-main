@@ -13,7 +13,7 @@ public class DSContinuityProperties extends ContinuityPropertiesProvider {
     public void generate() {
         ContinuityProperty shelfProperty = new ContinuityProperty(DSBlocks.COMMERCIAL_SHELF.get(), CTMMethods.HORIZONTAL)
                 .tiles("0-3").faces(Faces.NORTH).connect(CTMConnects.BLOCK).textureSuffix("_empty-fusion");
-        ContinuityProperty shelfTopProperty = shelfProperty.clone().faces(Faces.TOP).textureSuffix("_top-fusion");
+        ContinuityProperty shelfTopProperty = shelfProperty.clone().faces(Faces.TOP, Faces.BOTTOM).textureSuffix("_top-fusion");
 
         this.facingCtms(shelfProperty, Faces.NORTH, Faces.EAST, Faces.SOUTH, Faces.WEST);
         this.ctm(shelfTopProperty);

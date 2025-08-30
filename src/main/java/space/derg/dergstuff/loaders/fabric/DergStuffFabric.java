@@ -10,7 +10,7 @@ import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
-import net.minecraft.data.models.model.TextureMapping;
+import net.fabricmc.loader.impl.util.StringUtil;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import space.derg.dergstuff.DergStuff;
@@ -30,10 +30,13 @@ public class DergStuffFabric implements ModInitializer, ClientModInitializer {
 
         Optional<ModContainer> modContainer = FabricLoader.getInstance().getModContainer(DergStuff.MOD_ID);
 
+        // Priority list, Fusion > Continuity > Athena
         if (modContainer.isPresent()) {
             ModContainer container = modContainer.get();
-            registerBuiltInPack(container, "fusion");
-            registerBuiltInPack(container, "athena");
+            boolean fusionLoaded = registerBuiltInPack(container, "fusion");
+            if (!fusionLoaded) {
+                registerBuiltInPack(container, "athena");
+            }
             registerBuiltInPack(container, "continuity");
         }
 
@@ -50,15 +53,17 @@ public class DergStuffFabric implements ModInitializer, ClientModInitializer {
         RegisterEntityRenderersEvent.EVENT.invoke(new RegisterEntityRenderersEvent(EntityRendererRegistry::register));
     }
 
-    private void registerBuiltInPack(ModContainer modContainer, String modid) {
-        if (FabricLoader.getInstance().isModLoaded(modid)) {
+    private boolean registerBuiltInPack(ModContainer modContainer, String modid) {
+        boolean isModLoaded = FabricLoader.getInstance().isModLoaded(modid);
+        if (isModLoaded) {
             ResourceManagerHelper.registerBuiltinResourcePack(
                     new ResourceLocation(DergStuff.MOD_ID, modid),
                     modContainer,
-                    Component.literal(modid + " Support for Derg Industries"),
+                    Component.literal(StringUtil.capitalize(modid) + " Support For Derg Stuff"),
                     ResourcePackActivationType.NORMAL
             );
         }
+        return isModLoaded;
     }
 }
 //?}
