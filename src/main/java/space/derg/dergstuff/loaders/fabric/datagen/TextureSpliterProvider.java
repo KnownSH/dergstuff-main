@@ -14,6 +14,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 public abstract class TextureSpliterProvider implements DataProvider {
@@ -23,6 +24,15 @@ public abstract class TextureSpliterProvider implements DataProvider {
     public TextureSpliterProvider(FabricDataOutput output) {
         this.textures = new ArrayList<>();
         this.output = output;
+    }
+
+    public static Path getOptifineCTMDir(FabricDataOutput output, ResourceLocation resource) {
+        return output.getOutputFolder()
+                .resolve(Path.of(
+                        "assets",
+                        resource.getNamespace(),
+                        "optifine/ctm",
+                        resource.getPath().split("/")[1]));
     }
 
     @Override
@@ -39,9 +49,7 @@ public abstract class TextureSpliterProvider implements DataProvider {
                     .get()
                     .resolve(Path.of(this.output.getModId(), "textures", texture.getPath() + ".png"));
 
-            Path textureOutput = this.output
-                    .getOutputFolder()
-                    .resolve(Path.of("assets", texture.getNamespace(), "textures", texture.getPath(), split.suffix() + ".png"));
+            Path textureOutput = getOptifineCTMDir(this.output, texture).resolve(split.suffix() + ".png");;
 
             CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
                 try (InputStream inputStream = Files.newInputStream(textureInput)) {
@@ -63,6 +71,12 @@ public abstract class TextureSpliterProvider implements DataProvider {
 
     public final void splitTexture(ResourceLocation texture, String suffix, int x, int y) {
         this.textures.add(new TextureSplit(texture, suffix, x, y));
+    }
+
+    public final void batchSplitTextures(ResourceLocation texture, Map<String, List<Integer>> batches) {
+        batches.forEach((suffix, coords) -> {
+            this.textures.add(new TextureSplit(texture, suffix, coords.get(0), coords.get(1)));
+        });
     }
 
     public abstract void generate();

@@ -126,10 +126,10 @@ dependencies {
         implementIfPropExists("deps.modmenu") { "com.terraformersmc:modmenu:$it" }
 
         // Fabric compats
-        //implementIfPropExists("deps.fusion") { "maven.modrinth:fusion-connected-textures:$it-$loader-mc$minecraft" }
-        modstitchModCompileOnly("maven.modrinth:fusion-connected-textures:${property("deps.fusion")}-$loader-mc$minecraft")
-        //implementIfPropExists("deps.athena") { "earth.terrarium.athena:athena-$loader-$minecraft:$it" }
-        modstitchModCompileOnly("earth.terrarium.athena:athena-$loader-$minecraft:${property("deps.athena")}")
+        implementIfPropExists("deps.fusion") { "maven.modrinth:fusion-connected-textures:$it-$loader-mc$minecraft" }
+        //modstitchModCompileOnly("maven.modrinth:fusion-connected-textures:${property("deps.fusion")}-$loader-mc$minecraft")
+        implementIfPropExists("deps.athena") { "earth.terrarium.athena:athena-$loader-$minecraft:$it" }
+        //modstitchModCompileOnly("earth.terrarium.athena:athena-$loader-$minecraft:${property("deps.athena")}")
         implementIfPropExists("deps.continuity") { "maven.modrinth:continuity:$it+$minecraft" }
     }
 

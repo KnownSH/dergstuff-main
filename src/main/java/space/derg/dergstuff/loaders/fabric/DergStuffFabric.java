@@ -10,6 +10,7 @@ import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
+import net.minecraft.data.models.model.TextureMapping;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import space.derg.dergstuff.DergStuff;
@@ -55,7 +56,7 @@ public class DergStuffFabric implements ModInitializer, ClientModInitializer {
                     new ResourceLocation(DergStuff.MOD_ID, modid),
                     modContainer,
                     Component.literal(modid + " Support for Derg Industries"),
-                    ResourcePackActivationType.ALWAYS_ENABLED
+                    ResourcePackActivationType.NORMAL
             );
         }
     }
