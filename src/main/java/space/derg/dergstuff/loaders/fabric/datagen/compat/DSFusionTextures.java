@@ -19,6 +19,7 @@ public class DSFusionTextures extends FusionTextureMetadataProvider {
     protected void generate() {
         ConnectingTextureData textureData = ConnectingTextureData.builder().layout(ConnectingTextureLayout.HORIZONTAL).build();
         this.addTextureMetadata(TextureMapping.getBlockTexture(DSBlocks.COMMERCIAL_SHELF.get(), "_empty-fusion"), DefaultTextureTypes.CONNECTING, textureData);
+        this.addTextureMetadata(TextureMapping.getBlockTexture(DSBlocks.COMMERCIAL_SHELF.get(), "_top-fusion"), DefaultTextureTypes.CONNECTING, textureData);
     }
 }
 //?}

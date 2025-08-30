@@ -32,7 +32,7 @@ public class DergStuffFabric implements ModInitializer, ClientModInitializer {
         if (modContainer.isPresent() && FabricLoader.getInstance().isModLoaded("fusion")) {
             ResourceManagerHelper.registerBuiltinResourcePack(
                     new ResourceLocation(DergStuff.MOD_ID, "fusion"),
-                    FabricLoader.getInstance().getModContainer(DergStuff.MOD_ID).get(),
+                    modContainer.get(),
                     Component.literal("Fusion Support for Derg Industries"),
                     ResourcePackActivationType.ALWAYS_ENABLED
             );

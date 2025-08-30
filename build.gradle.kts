@@ -2,6 +2,8 @@ plugins {
     id("dev.isxander.modstitch.base") version "0.7.0-unstable" // giving all credit here to particle-rain for fixing my legacy forge issues
 }
 
+
+
 fun ifDef(name: String, consumer: (prop: String) -> Unit) {
     (findProperty(name) as? String?)
         ?.let(consumer)

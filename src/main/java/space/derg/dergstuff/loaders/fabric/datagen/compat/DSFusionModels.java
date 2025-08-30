@@ -23,7 +23,7 @@ public class DSFusionModels extends DSFusionModelProvider {
                 .parent(new ResourceLocation("minecraft", "block/orientable"))
                 .texture("front", TextureMapping.getBlockTexture(DSBlocks.COMMERCIAL_SHELF.get(), "_empty-fusion"))
                 .texture("side", TextureMapping.getBlockTexture(DSBlocks.COMMERCIAL_SHELF.get(), "_side"))
-                .texture("top", TextureMapping.getBlockTexture(DSBlocks.COMMERCIAL_SHELF.get(), "_top"))
+                .texture("top", TextureMapping.getBlockTexture(DSBlocks.COMMERCIAL_SHELF.get(), "_top-fusion"))
                 .connection(DefaultConnectionPredicates.isSameBlock())
                 .build();
         ModelInstance<ConnectingModelData> modelInstance = ModelInstance.of(DefaultModelTypes.CONNECTING, modelData);

@@ -10,10 +10,7 @@ import net.minecraft.data.models.model.TextureMapping;
 import net.minecraft.data.models.model.TextureSlot;
 import net.minecraft.resources.ResourceLocation;
 import space.derg.dergstuff.DergStuff;
-import space.derg.dergstuff.loaders.fabric.datagen.DSBlockModels;
-import space.derg.dergstuff.loaders.fabric.datagen.DSCraftingRecipes;
-import space.derg.dergstuff.loaders.fabric.datagen.DSLangEnglish;
-import space.derg.dergstuff.loaders.fabric.datagen.DSLootTables;
+import space.derg.dergstuff.loaders.fabric.datagen.*;
 //? if fusion {
 import space.derg.dergstuff.loaders.fabric.datagen.compat.DSFusionModels;
 import space.derg.dergstuff.loaders.fabric.datagen.compat.DSFusionTextures;
@@ -61,6 +58,8 @@ public class DergStuffDatagen implements DataGeneratorEntrypoint {
 
         //? if fusion {
         FabricDataGenerator.Pack fusionPack = fabricDataGenerator.createBuiltinResourcePack(new ResourceLocation(DergStuff.MOD_ID, "fusion"));
+        fusionPack.addProvider((FabricDataGenerator.Pack.Factory<FileCopyProvider>) output ->
+                new FileCopyProvider(output).addFile(new ResourceLocation(DergStuff.MOD_ID, "fusion-pack.png"), "pack.png"));
         fusionPack.addProvider(DSFusionTextures::new);
         fusionPack.addProvider(DSFusionModels::new);
         //?}
