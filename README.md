@@ -3,6 +3,10 @@
 
 <p align="center">
 <img alt="risugamis-modloader" height="40" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/compact/unsupported/risugamis-modloader_vector.svg">
+<br>
+<img alt="fusion" height="56" src="https://raw.githubusercontent.com/KnownSH/dergstuff-main/refs/heads/master/assets/fusion_support.svg" />
+<img alt="continuity" height="56" src="https://raw.githubusercontent.com/KnownSH/dergstuff-main/refs/heads/master/assets/continuity_support.svg" />
+<img alt="athena" height="56" src="https://raw.githubusercontent.com/KnownSH/dergstuff-main/refs/heads/master/assets/athena_support.svg" />
 </p>
 
 ## Supports Athena, Fusion, and Optifine-CTM based connected textures
