@@ -11,8 +11,10 @@ allprojects {
         }
         mavenCentral()
         mavenLocal()
+
         strictMaven("https://maven.fabricmc.net/", "net.fabricmc")
         strictMaven("https://maven.terraformersmc.com/", "com.terraformersmc")
+        strictMaven("https://maven.teamresourceful.com/repository/maven-public/", "earth.terrarium.athena")
         maven("https://maven.neoforged.net/releases")
         maven("https://api.modrinth.com/maven")
     }

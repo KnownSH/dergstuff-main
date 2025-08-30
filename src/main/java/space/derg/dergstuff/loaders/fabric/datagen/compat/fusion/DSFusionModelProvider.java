@@ -1,5 +1,5 @@
 //? if fabric && fusion {
-package space.derg.dergstuff.loaders.fabric.datagen.compat;
+package space.derg.dergstuff.loaders.fabric.datagen.compat.fusion;
 
 import com.google.gson.JsonObject;
 import com.supermartijn642.fusion.api.model.FusionModelTypeRegistry;
@@ -42,7 +42,6 @@ public abstract class DSFusionModelProvider implements DataProvider {
                     Path modelPath = getModelPath(output, id);
                     JsonObject serialized = FusionModelTypeRegistry.serializeModelData(model);
                     ConditionJsonProvider.write(serialized, DefaultResourceConditions.allModsLoaded("fusion"));
-
                     return DataProvider.saveStable(cache, serialized, modelPath);
                 })
                 .toList();

@@ -28,6 +28,7 @@
     "minecraft": "${mc}"
   },
   "recommends": {
-    "fusion": ">=1.0.0"
+    "fusion": ">=1.0.0",
+    "athena": ">=3.0.0"
   }
 }

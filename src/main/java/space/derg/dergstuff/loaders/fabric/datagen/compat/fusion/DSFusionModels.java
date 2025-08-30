@@ -1,5 +1,5 @@
 //? if fabric && fusion {
-package space.derg.dergstuff.loaders.fabric.datagen.compat;
+package space.derg.dergstuff.loaders.fabric.datagen.compat.fusion;
 
 import com.supermartijn642.fusion.api.model.DefaultModelTypes;
 import com.supermartijn642.fusion.api.model.ModelInstance;

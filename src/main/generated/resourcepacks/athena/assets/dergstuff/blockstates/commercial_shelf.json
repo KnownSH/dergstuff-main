@@ -1,0 +1,15 @@
+{
+  "athena:loader": "athena:ctm",
+  "ctm_textures": {
+    "center": "dergstuff:block/commercial_shelf_empty-fusion/0",
+    "empty": "dergstuff:block/commercial_shelf_empty-fusion/0",
+    "horizontal": "dergstuff:block/commercial_shelf_empty-fusion/0",
+    "particle": "dergstuff:block/commercial_shelf_empty-fusion/1",
+    "vertical": "dergstuff:block/commercial_shelf_empty-fusion/1"
+  },
+  "variants": {
+    "": {
+      "model": "dergstuff:block/commercial_shelf_empty-fusion/"
+    }
+  }
+}

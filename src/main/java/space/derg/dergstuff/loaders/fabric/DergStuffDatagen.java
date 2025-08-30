@@ -3,7 +3,6 @@ package space.derg.dergstuff.loaders.fabric;
 
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.data.models.BlockModelGenerators;
 import net.minecraft.data.models.model.ModelTemplates;
 import net.minecraft.data.models.model.TextureMapping;
@@ -11,15 +10,17 @@ import net.minecraft.data.models.model.TextureSlot;
 import net.minecraft.resources.ResourceLocation;
 import space.derg.dergstuff.DergStuff;
 import space.derg.dergstuff.loaders.fabric.datagen.*;
+//? if athena {
+import space.derg.dergstuff.loaders.fabric.datagen.compat.athena.DSAthenaBlockStates;
+//?}
 //? if fusion {
-import space.derg.dergstuff.loaders.fabric.datagen.compat.DSFusionModels;
-import space.derg.dergstuff.loaders.fabric.datagen.compat.DSFusionTextures;
+import space.derg.dergstuff.loaders.fabric.datagen.compat.continuity.DSContinuityProperties;
+import space.derg.dergstuff.loaders.fabric.datagen.compat.fusion.DSFusionModels;
+import space.derg.dergstuff.loaders.fabric.datagen.compat.fusion.DSFusionTextures;
 //?}
 import space.derg.dergstuff.loaders.fabric.datagen.entries.DatagenEntries;
 import space.derg.dergstuff.registry.DSBlocks;
 import space.derg.dergstuff.registry.DSItems;
-
-import java.nio.file.Path;
 
 public class DergStuffDatagen implements DataGeneratorEntrypoint {
     public static final DatagenEntries ENTRIES = new DatagenEntries();
@@ -55,6 +56,10 @@ public class DergStuffDatagen implements DataGeneratorEntrypoint {
         datapack.addProvider(DSBlockModels::new);
         datapack.addProvider(DSLootTables::new);
         datapack.addProvider(DSCraftingRecipes::new);
+        datapack.addProvider(DSTextureSpliting::new);
+
+        //? if continuity
+        datapack.addProvider(DSContinuityProperties::new);
 
         //? if fusion {
         FabricDataGenerator.Pack fusionPack = fabricDataGenerator.createBuiltinResourcePack(new ResourceLocation(DergStuff.MOD_ID, "fusion"));
@@ -62,6 +67,13 @@ public class DergStuffDatagen implements DataGeneratorEntrypoint {
                 new FileCopyProvider(output).addFile(new ResourceLocation(DergStuff.MOD_ID, "fusion-pack.png"), "pack.png"));
         fusionPack.addProvider(DSFusionTextures::new);
         fusionPack.addProvider(DSFusionModels::new);
+        //?}
+
+        //? if athena {
+        FabricDataGenerator.Pack athenaPack = fabricDataGenerator.createBuiltinResourcePack(new ResourceLocation(DergStuff.MOD_ID, "athena"));
+        athenaPack.addProvider((FabricDataGenerator.Pack.Factory<FileCopyProvider>) output ->
+                new FileCopyProvider(output).addFile(new ResourceLocation(DergStuff.MOD_ID, "athena-pack.png"), "pack.png"));
+        athenaPack.addProvider(DSAthenaBlockStates::new);
         //?}
     }
 }

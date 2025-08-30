@@ -29,13 +29,11 @@ public class DergStuffFabric implements ModInitializer, ClientModInitializer {
 
         Optional<ModContainer> modContainer = FabricLoader.getInstance().getModContainer(DergStuff.MOD_ID);
 
-        if (modContainer.isPresent() && FabricLoader.getInstance().isModLoaded("fusion")) {
-            ResourceManagerHelper.registerBuiltinResourcePack(
-                    new ResourceLocation(DergStuff.MOD_ID, "fusion"),
-                    modContainer.get(),
-                    Component.literal("Fusion Support for Derg Industries"),
-                    ResourcePackActivationType.ALWAYS_ENABLED
-            );
+        if (modContainer.isPresent()) {
+            ModContainer container = modContainer.get();
+            registerBuiltInPack(container, "fusion");
+            registerBuiltInPack(container, "athena");
+            registerBuiltInPack(container, "continuity");
         }
 
         UseEntityCallback.EVENT.register((player, world, hand, entity, hitResult) ->
@@ -49,6 +47,17 @@ public class DergStuffFabric implements ModInitializer, ClientModInitializer {
     public void onInitializeClient() {
         DergStuffClient.initialize();
         RegisterEntityRenderersEvent.EVENT.invoke(new RegisterEntityRenderersEvent(EntityRendererRegistry::register));
+    }
+
+    private void registerBuiltInPack(ModContainer modContainer, String modid) {
+        if (FabricLoader.getInstance().isModLoaded(modid)) {
+            ResourceManagerHelper.registerBuiltinResourcePack(
+                    new ResourceLocation(DergStuff.MOD_ID, modid),
+                    modContainer,
+                    Component.literal(modid + " Support for Derg Industries"),
+                    ResourcePackActivationType.ALWAYS_ENABLED
+            );
+        }
     }
 }
 //?}

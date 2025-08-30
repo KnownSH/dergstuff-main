@@ -15,3 +15,5 @@ This is mostly a building mod.
 Little timmy implemented his blocks with mccreator, meanwhile I proceed to use whatever this is to make my blocks compatible with all both modloaders. In the end we both got the same result, **I lost.** 
 
 This is not a codebase to take inspiration from or to be inspired by, unless you wish to take inspiration from this codebase.
+
+### Credits

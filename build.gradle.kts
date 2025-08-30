@@ -126,21 +126,28 @@ dependencies {
         implementIfPropExists("deps.modmenu") { "com.terraformersmc:modmenu:$it" }
 
         // Fabric compats
-        implementIfPropExists("deps.fusion") { "maven.modrinth:fusion-connected-textures:$it-${loader}-mc${minecraft}" }
-        //modstitchModCompileOnly("maven.modrinth:fusion-connected-textures:${property("deps.fusion")}-${loader}-mc${minecraft}")
+        //implementIfPropExists("deps.fusion") { "maven.modrinth:fusion-connected-textures:$it-$loader-mc$minecraft" }
+        modstitchModCompileOnly("maven.modrinth:fusion-connected-textures:${property("deps.fusion")}-$loader-mc$minecraft")
+        //implementIfPropExists("deps.athena") { "earth.terrarium.athena:athena-$loader-$minecraft:$it" }
+        modstitchModCompileOnly("earth.terrarium.athena:athena-$loader-$minecraft:${property("deps.athena")}")
+        implementIfPropExists("deps.continuity") { "maven.modrinth:continuity:$it+$minecraft" }
     }
 
     if (isForge) {
         // @shadows do not remap, so anything legacy forge related can only be targeted via compileonly brah
-        modstitchModCompileOnly("maven.modrinth:fusion-connected-textures:${property("deps.fusion")}-${loader}-mc${minecraft}")
+        modstitchModCompileOnly("maven.modrinth:fusion-connected-textures:${property("deps.fusion")}-$loader-mc$minecraft")
+        modstitchModCompileOnly("earth.terrarium.athena:athena-$loader-$minecraft:${property("deps.athena")}")
     }
 }
 
 val loaderStonecutter: String = name.substringAfter('-')
+val requireCompats: Boolean = true;
 stonecutter {
     constants {
         match(loaderStonecutter, "fabric", "forge", "neoforge")
-        put("fusion", hasProperty("deps.fusion"))
+        put("fusion", requireCompats && hasProperty("deps.fusion"))
+        put("athena", requireCompats && hasProperty("deps.athena"))
+        put("continuity", requireCompats && hasProperty("deps.continuity"))
     }
 }
 
