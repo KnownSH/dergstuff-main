@@ -1,5 +1,5 @@
 //? if fabric && fusion {
-package space.derg.dergstuff.loaders.fabric.datagen.compat.fusion;
+package space.derg.dergstuff.loaders.fabric.datagen;
 
 import com.supermartijn642.fusion.api.provider.FusionTextureMetadataProvider;
 import com.supermartijn642.fusion.api.texture.DefaultTextureTypes;

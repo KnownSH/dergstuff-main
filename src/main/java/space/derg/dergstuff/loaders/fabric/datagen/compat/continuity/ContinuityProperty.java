@@ -5,14 +5,15 @@ import net.minecraft.world.level.block.Block;
 
 public class ContinuityProperty implements Cloneable {
     public final Block block;
-    public final OptifineMethods method;
+    public final CTMMethods method;
     public String nameSuffix = "";
+    public String textureSuffix = "";
     public String connect;
     public String tiles;
     public String suffixes;
     public Faces[] faces;
 
-    public ContinuityProperty(Block block, OptifineMethods method) {
+    public ContinuityProperty(Block block, CTMMethods method) {
         this.block = block;
         this.method = method;
     }
@@ -29,6 +30,11 @@ public class ContinuityProperty implements Cloneable {
 
     public ContinuityProperty nameSuffix(String suffix) {
         this.nameSuffix = suffix;
+        return this;
+    }
+
+    public ContinuityProperty textureSuffix(String suffix) {
+        this.textureSuffix = suffix;
         return this;
     }
 

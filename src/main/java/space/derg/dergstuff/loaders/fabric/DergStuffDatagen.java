@@ -11,12 +11,12 @@ import net.minecraft.resources.ResourceLocation;
 import space.derg.dergstuff.DergStuff;
 import space.derg.dergstuff.loaders.fabric.datagen.*;
 //? if athena {
-import space.derg.dergstuff.loaders.fabric.datagen.compat.athena.DSAthenaBlockStates;
+import space.derg.dergstuff.loaders.fabric.datagen.DSAthenaBlockStates;
 //?}
 //? if fusion {
-import space.derg.dergstuff.loaders.fabric.datagen.compat.continuity.DSContinuityProperties;
-import space.derg.dergstuff.loaders.fabric.datagen.compat.fusion.DSFusionModels;
-import space.derg.dergstuff.loaders.fabric.datagen.compat.fusion.DSFusionTextures;
+import space.derg.dergstuff.loaders.fabric.datagen.DSContinuityProperties;
+import space.derg.dergstuff.loaders.fabric.datagen.DSFusionModels;
+import space.derg.dergstuff.loaders.fabric.datagen.DSFusionTextures;
 //?}
 import space.derg.dergstuff.loaders.fabric.datagen.entries.DatagenEntries;
 import space.derg.dergstuff.registry.DSBlocks;

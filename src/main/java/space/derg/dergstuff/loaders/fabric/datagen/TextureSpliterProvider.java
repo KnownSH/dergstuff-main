@@ -32,7 +32,7 @@ public abstract class TextureSpliterProvider implements DataProvider {
                         "assets",
                         resource.getNamespace(),
                         "optifine/ctm",
-                        resource.getPath().split("/")[1]));
+                        resource.getPath()));
     }
 
     @Override
@@ -49,7 +49,7 @@ public abstract class TextureSpliterProvider implements DataProvider {
                     .get()
                     .resolve(Path.of(this.output.getModId(), "textures", texture.getPath() + ".png"));
 
-            Path textureOutput = getOptifineCTMDir(this.output, texture).resolve(split.suffix() + ".png");;
+            Path textureOutput = getOptifineCTMDir(this.output, new ResourceLocation(this.output.getModId(), texture.getPath().split("/")[1])).resolve(split.suffix() + ".png");;
 
             CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
                 try (InputStream inputStream = Files.newInputStream(textureInput)) {

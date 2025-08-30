@@ -34,34 +34,32 @@ public abstract class ContinuityPropertiesProvider implements DataProvider {
     public CompletableFuture<?> run(CachedOutput output) {
         this.generate();
         return CompletableFuture.runAsync(() -> {
-            this.continuityProperties.forEach(continuityProperty -> {
-                ResourceLocation blockLocation = BuiltInRegistries.BLOCK.getKey(continuityProperty.block);
+            this.continuityProperties.forEach(property -> {
+                ResourceLocation blockLocation = BuiltInRegistries.BLOCK.getKey(property.block);
 
                 Path propertiesOutput = TextureSpliterProvider.getOptifineCTMDir(
-                        this.output, TextureMapping.getBlockTexture(continuityProperty.block, "_empty-fusion"))
-                        .resolve(blockLocation.getPath() + continuityProperty.nameSuffix + ".properties");
+                        this.output, BuiltInRegistries.BLOCK.getKey(property.block).withSuffix(property.textureSuffix))
+                        .resolve(blockLocation.getPath() + property.nameSuffix + ".properties");
                 File propertiesFile = propertiesOutput.toFile();
-                LogUtils.getLogger().info(propertiesFile.getAbsolutePath());
-                DergStuff.LOGGER.info(propertiesFile.getAbsolutePath());
 
                 try (FileWriter fileWriter = new FileWriter(propertiesFile)){
                     PrintWriter bufferedWriter = new PrintWriter(fileWriter);
-                    bufferedWriter.println("method=" + continuityProperty.method.get());
-                    bufferedWriter.println("matchBlocks=" + Objects.requireNonNullElse(continuityProperty.suffixes, blockLocation));
+                    bufferedWriter.println("method=" + property.method.get());
+                    bufferedWriter.println("matchBlocks=" + Objects.requireNonNullElse(property.suffixes, blockLocation));
 
-                    if (continuityProperty.tiles != null) {
-                        bufferedWriter.println("tiles=" + continuityProperty.tiles);
+                    if (property.tiles != null) {
+                        bufferedWriter.println("tiles=" + property.tiles);
                     }
 
-                    if (continuityProperty.faces != null) {
-                        String facesString = Arrays.stream(continuityProperty.faces)
+                    if (property.faces != null) {
+                        String facesString = Arrays.stream(property.faces)
                                 .map(Faces::get)
                                 .collect(Collectors.joining(" "));
                         bufferedWriter.println("faces=" + facesString);
                     }
 
-                    if (continuityProperty.connect != null) {
-                        bufferedWriter.println("connect=" + continuityProperty.connect);
+                    if (property.connect != null) {
+                        bufferedWriter.println("connect=" + property.connect);
                     }
 
                     bufferedWriter.close();

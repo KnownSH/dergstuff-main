@@ -1,5 +1,5 @@
 //? if fabric && athena {
-package space.derg.dergstuff.loaders.fabric.datagen.compat.athena;
+package space.derg.dergstuff.loaders.fabric.datagen;
 
 import com.google.common.collect.ImmutableList;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -11,6 +11,9 @@ import net.minecraft.data.models.blockstates.VariantProperties;
 import net.minecraft.data.models.model.TextureMapping;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
+import space.derg.dergstuff.loaders.fabric.datagen.compat.athena.AthenaBlockStateGenerator;
+import space.derg.dergstuff.loaders.fabric.datagen.compat.athena.AthenaCTMLayout;
+import space.derg.dergstuff.loaders.fabric.datagen.compat.athena.AthenaTextureMap;
 import space.derg.dergstuff.registry.DSBlocks;
 
 public class DSAthenaBlockStates extends FabricModelProvider {

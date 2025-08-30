@@ -1,5 +1,5 @@
 //? if fabric && fusion {
-package space.derg.dergstuff.loaders.fabric.datagen.compat.fusion;
+package space.derg.dergstuff.loaders.fabric.datagen;
 
 import com.supermartijn642.fusion.api.model.DefaultModelTypes;
 import com.supermartijn642.fusion.api.model.ModelInstance;
@@ -10,6 +10,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.data.models.model.TextureMapping;
 import net.minecraft.resources.ResourceLocation;
 import space.derg.dergstuff.DergStuff;
+import space.derg.dergstuff.loaders.fabric.datagen.compat.fusion.DSFusionModelProvider;
 import space.derg.dergstuff.registry.DSBlocks;
 
 public class DSFusionModels extends DSFusionModelProvider {

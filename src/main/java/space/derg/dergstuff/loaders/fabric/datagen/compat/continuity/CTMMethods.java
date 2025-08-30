@@ -1,7 +1,7 @@
 //? if fabric && continuity {
 package space.derg.dergstuff.loaders.fabric.datagen.compat.continuity;
 
-public enum OptifineMethods {
+public enum CTMMethods {
     CTM,
     CTM_COMPACT,
     HORIZONTAL,

@@ -14,8 +14,9 @@ public class DSTextureSpliting extends TextureSpliterProvider {
 
     @Override
     public void generate() {
-        ResourceLocation shelfTexture = TextureMapping.getBlockTexture(DSBlocks.COMMERCIAL_SHELF.get(), "_empty-fusion");
-        FusionToOptifine.horizontal(this, shelfTexture);
+        ResourceLocation shelfTexture = TextureMapping.getBlockTexture(DSBlocks.COMMERCIAL_SHELF.get());
+        FusionToOptifine.horizontal(this, shelfTexture.withSuffix("_empty-fusion"));
+        FusionToOptifine.horizontal(this, shelfTexture.withSuffix("_top-fusion"));
     }
 }
 //?}
