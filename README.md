@@ -2,14 +2,13 @@
 > **This mod features blocks**; which can be placed in the world like regular blocks, I believe this is a foreign concept for some.
 
 <p align="center">
-<img alt="risugamis-modloader" height="40" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/compact/unsupported/risugamis-modloader_vector.svg">
-<br>
 <img alt="fusion" height="56" src="https://raw.githubusercontent.com/KnownSH/dergstuff-main/refs/heads/master/assets/fusion_support.svg" />
 <img alt="continuity" height="56" src="https://raw.githubusercontent.com/KnownSH/dergstuff-main/refs/heads/master/assets/continuity_support.svg" />
 <img alt="athena" height="56" src="https://raw.githubusercontent.com/KnownSH/dergstuff-main/refs/heads/master/assets/athena_support.svg" />
+<br>
+<img alt="forge" height="40" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/compact/supported/forge_vector.svg">
+<img alt="fabric" height="40" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/compact/supported/fabric_vector.svg">
 </p>
-
-## Supports Athena, Fusion, and Optifine-CTM based connected textures
 
 This is mostly a building mod.
 
