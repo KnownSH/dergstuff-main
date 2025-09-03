@@ -11,6 +11,9 @@
 > **This mod features blocks**; which can be placed in the world like regular blocks, I believe this is a foreign concept for some.
 
 ## This is **mostly** a non-original building mod.
-<sup>Basically if it's a resoucepack but not a mod, it will be in here (eventually)</sup>
+<sup>Basically if it's in a resoucepack but not a mod, it will be in here (eventually)</sup>
 
 This is not a codebase to take inspiration from or to be inspired by, unless you wish to take inspiration from this codebase.
+
+### Credits
+* The Commercial Shelf texture is based off the shelf texture used in the [GreenfieldMC](https://www.greenfieldmc.net/) resourcepack

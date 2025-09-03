@@ -24,13 +24,17 @@ public class DSAthenaBlockStates extends FabricModelProvider {
     @Override
     public void generateBlockStateModels(BlockModelGenerators generator) {
         Block shelf = DSBlocks.COMMERCIAL_SHELF.get();
-        ResourceLocation blockModel = TextureMapping.getBlockTexture(shelf).withSuffix("_empty-fusion/"); // this is so dumb but it works so well im not changing it
+
+        // this is so dumb, but it works so well im not changing it
+
+        /*
+        ResourceLocation blockModel = TextureMapping.getBlockTexture(shelf).withSuffix("_empty-fusion/");
         generator.blockStateOutput.accept(new AthenaBlockStateGenerator(
                 shelf, ImmutableList.of(Variant.variant().with(VariantProperties.MODEL, blockModel)))
                 .layout(AthenaCTMLayout.CTM)
                 .mapToSame(blockModel.withSuffix("0"), AthenaTextureMap.CENTER, AthenaTextureMap.EMPTY, AthenaTextureMap.HORIZONTAL)
                 .mapToSame(blockModel.withSuffix("1"), AthenaTextureMap.VERTICAL, AthenaTextureMap.PARTICLE));
-        generator.skipAutoItemBlock(shelf);
+        generator.skipAutoItemBlock(shelf);*/
     }
 
     @Override

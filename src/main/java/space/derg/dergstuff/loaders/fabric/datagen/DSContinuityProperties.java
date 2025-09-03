@@ -1,3 +1,4 @@
+//? if fabric {
 package space.derg.dergstuff.loaders.fabric.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -19,3 +20,4 @@ public class DSContinuityProperties extends ContinuityPropertiesProvider {
         this.ctm(shelfTopProperty);
     }
 }
+//?}

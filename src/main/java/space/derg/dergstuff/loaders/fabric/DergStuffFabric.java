@@ -3,6 +3,7 @@ package space.derg.dergstuff.loaders.fabric;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.event.player.UseEntityCallback;
 import net.fabricmc.fabric.api.event.player.UseItemCallback;
@@ -11,6 +12,7 @@ import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
 import net.fabricmc.loader.impl.util.StringUtil;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import space.derg.dergstuff.DergStuff;
@@ -18,6 +20,7 @@ import space.derg.dergstuff.client.DergStuffClient;
 import space.derg.dergstuff.loaders.common.events.RegisterEntityRenderersEvent;
 import space.derg.dergstuff.loaders.common.events.RightClickEntityEvent;
 import space.derg.dergstuff.loaders.common.events.RightClickItemEvent;
+import space.derg.dergstuff.registry.DSBlocks;
 import space.derg.dergstuff.registry.DSItemGroups;
 
 import java.util.Optional;
@@ -51,6 +54,7 @@ public class DergStuffFabric implements ModInitializer, ClientModInitializer {
     public void onInitializeClient() {
         DergStuffClient.initialize();
         RegisterEntityRenderersEvent.EVENT.invoke(new RegisterEntityRenderersEvent(EntityRendererRegistry::register));
+        BlockRenderLayerMap.INSTANCE.putBlock(DSBlocks.COMMERCIAL_SHELF.get(), RenderType.cutout());
     }
 
     private boolean registerBuiltInPack(ModContainer modContainer, String modid) {

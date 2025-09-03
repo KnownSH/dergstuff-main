@@ -1,3 +1,4 @@
+//? if fabric {
 package space.derg.dergstuff.loaders.fabric.datagen.compat.continuity;
 
 public enum Faces {
@@ -14,3 +15,4 @@ public enum Faces {
         return this.toString().toLowerCase();
     }
 }
+//?}

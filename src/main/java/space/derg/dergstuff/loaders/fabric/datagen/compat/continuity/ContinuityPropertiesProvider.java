@@ -2,14 +2,11 @@
 package space.derg.dergstuff.loaders.fabric.datagen.compat.continuity;
 
 import com.google.common.hash.HashCode;
-import com.mojang.logging.LogUtils;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
-import net.minecraft.data.models.model.TextureMapping;
 import net.minecraft.resources.ResourceLocation;
-import space.derg.dergstuff.DergStuff;
 import space.derg.dergstuff.loaders.fabric.datagen.TextureSpliterProvider;
 
 import java.io.*;

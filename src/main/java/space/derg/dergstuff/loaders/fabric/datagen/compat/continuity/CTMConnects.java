@@ -1,3 +1,4 @@
+//? if fabric {
 package space.derg.dergstuff.loaders.fabric.datagen.compat.continuity;
 
 public enum CTMConnects {
@@ -9,3 +10,4 @@ public enum CTMConnects {
         return this.toString().toLowerCase();
     }
 }
+//?}

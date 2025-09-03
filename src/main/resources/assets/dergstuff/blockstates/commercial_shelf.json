@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=east,shelftype=empty": {
+      "model": "dergstuff:block/commercial_shelf",
+      "y": 90
+    },
+    "facing=north,shelftype=empty": {
+      "model": "dergstuff:block/commercial_shelf"
+    },
+    "facing=south,shelftype=empty": {
+      "model": "dergstuff:block/commercial_shelf",
+      "y": 180
+    },
+    "facing=west,shelftype=empty": {
+      "model": "dergstuff:block/commercial_shelf",
+      "y": 270
+    },
+    "facing=east,shelftype=overlay1": {
+      "model": "dergstuff:block/commercial_shelf_overlay1",
+      "y": 90
+    },
+    "facing=north,shelftype=overlay1": {
+      "model": "dergstuff:block/commercial_shelf_overlay1"
+    },
+    "facing=south,shelftype=overlay1": {
+      "model": "dergstuff:block/commercial_shelf_overlay1",
+      "y": 180
+    },
+    "facing=west,shelftype=overlay1": {
+      "model": "dergstuff:block/commercial_shelf_overlay1",
+      "y": 270
+    }
+  }
+}
